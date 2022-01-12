@@ -13,8 +13,7 @@ function upload() {
 
     getBase64(_file).then(data => {
 
-
-        fetch('/api/upload', {
+        fetch('/api/upload-video', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

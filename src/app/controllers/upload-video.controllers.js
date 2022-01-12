@@ -1,12 +1,14 @@
 var crypto = require("crypto")
 var cloudinary = require('cloudinary').v2
-class UploadControllers{
-    async upload(req, res){
+class UploadVideoControllers{
+    async uploadVideo(req, res){
         const file = req.body.data
         var random = crypto.randomBytes(20).toString('hex')
         console.log(random)
         await cloudinary.uploader.upload(file, {
-            public_id: `images/${random}`
+            resource_type: 'video',
+            chunk_size: '100mb',
+            public_id: `video/${random}`
         },function (error, result) {
             if(error){
                 console.log(error)
@@ -25,4 +27,4 @@ class UploadControllers{
     }
 }
 
-module.exports = new UploadControllers
+module.exports = new UploadVideoControllers
