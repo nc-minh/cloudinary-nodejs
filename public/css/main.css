@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background-color: #131019;
+}
+
+.header__title{
+    text-align: center;
+    margin: 36px;
+    color: aliceblue;
+}
+
+.header__link{
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: auto;
+    margin-bottom: 32px;
+}
+
+.header__link img{
+    width: 100%;
+    height: 100%;
+}
+
+.content{
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 64px;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blanchedalmond;
+    margin-bottom: 8px;
+}
+
+.item__name{
+    color: rgb(30, 31, 32);
+    margin: 12px;
+}
+
+.item__input{
+    background-color: rgb(139, 115, 161);
+    margin-bottom: 12px;
+}
+
+.item__input input[type="text"]{
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    min-width: 320px;
+}
+
+.item__btn {
+    border: none;
+    background-color: #5666a5;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0px 18px;
+    display: inline-block;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    line-height: 36px;
+    font-weight: 400;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    border-radius: 23px;
+    letter-spacing: 2px;
+    -webkit-transform: translateZ(0);
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+  .item__btn:before {
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-radius: inherit;
+    background-color: #ffffff;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+  .item__btn:after {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border: 5px solid #5666a5;
+    content: '';
+    border-radius: inherit;
+  }
+  .item__btn:hover,
+  .snip1457.hover {
+    background-color: #5666a5;
+    color: #ffffff;
+  }
+  .item__btn:hover:before,
+  .item__btn.hover:before {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 0.25;
+  }
+
+
+.footer__text{
+    text-align: center;
+    color: cornsilk;
+}
+
+.footer__text a{
+    text-decoration: none;
+    color: darkorchid;
+}

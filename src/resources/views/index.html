@@ -5,10 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="public/css/main.css">
 </head>
 <body>
-    <input type="file" name="file" id="file">
-    <button onclick="upload()">upload</button>
+    <div class="app">
+        <header class="header">
+            <h1 class="header__title">Cloudinary Storage</h1>
+            <a class="header__link" href="https://github.com/nc-minh/cloudinary-nodejs" target="_blank">
+                <img src="public/img/github.png" alt="github">
+            </a>
+        </header>
+
+        <div class="content">
+            <div class="item">
+                <h3 class="item__name">Upload image</h3>
+                <div class="item__input">
+                    <input type="file" accept="image/*" name="file" id="file-upload">
+                </div>
+                <button class="item__btn">Upload</button>
+                <p class="item__notify"></p>
+            </div>
+            <div class="item">
+                <h3 class="item__name">Upload video</h3>
+                <div class="item__input">
+                    <input type="file" accept="video/mp4,video/x-m4v,video/*" name="file" id="file-upload-video">
+                </div>
+                <button class="item__btn">Upload</button>
+                <p class="item__notify"></p>
+            </div>
+            <div class="item">
+                <h3 class="item__name">Delete image</h3>
+                <div class="item__input">
+                    <input type="text" name="text" id="text-delete" placeholder="Public ID - image">
+                </div>
+                <button class="item__btn">Delete</button>
+                <p class="item__notify"></p>
+            </div>
+            <div class="item">
+                <h3 class="item__name">Delete video</h3>
+                <div class="item__input">
+                    <input type="text" name="text" id="text-delete-video" placeholder="Public ID - video">
+                </div>
+                <button class="item__btn">Delete</button>
+                <p class="item__notify"></p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="footer__text">Copyright &copy; 2022
+                <a href="https://github.com/nc-minh/cloudinary-nodejs" target="_blank">Mars</a>
+            </p>
+        </footer>
+    </div>
     <script src="public/js/main.js"></script>
 </body>
 </html>
