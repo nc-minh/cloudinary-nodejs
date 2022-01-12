@@ -1,60 +1,28 @@
 var cloudinary = require('cloudinary').v2
 const express = require('express')
-const path = require('path')
-const fs = require('fs')
-const fileUpload = require('express-fileupload')
 const app = express()
+const path = require('path')
+const fileUpload = require('express-fileupload')
 const port = 3000
+require('dotenv').config()
+var bodyParser = require('body-parser')
+// parse application/json
+app.use(bodyParser.json({limit: '50mb'}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
 app.use(fileUpload({ useTempFiles: true }))
 
-cloudinary.config({
-    cloud_name: 'domvksfsk',
-    api_key: '285966514612574',
-    api_secret: 'ZRjeOXHkDWPxmv7mt-Qp9aZKEEU'
-});
+const key = require('./src/app/middlewares/configure')
+cloudinary.config(key)
 
 //config public resources
-app.use('/', express.static(path.join(__dirname, '/')))
+app.use('/public', express.static(path.join(__dirname, '/public')))
 
+//route init
+const route = require('./src/routes/app.route.js')
+route(app)
 
-
-app.get('/', (req, res) => {
-    var url = path.join(__dirname, 'index.html')
-    res.sendFile(url)
-})
-
-app.post('/upload', async (req, res) => {
-
-    if (!req.files) {
-        res.status(400).json({
-            message: 'Upload failed - missing files!',
-            status: 'missing'
-        })
-    } else {
-        const file = req.files.file
-
-        console.log(file.tempFilePath)
-
-        await cloudinary.uploader.upload(file.tempFilePath,function (error, result) {
-                try {
-                    // fs.unlinkSync(file.tempFilePath)
-                    res.json({
-                        data: result,
-                        msg: 'succes'
-                    })
-                    
-                } catch (error) {
-                    console.log(error)
-                    res.json({
-                        error: error
-                    })
-                }
-            })
-    }
-
-})
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`App listening at http://localhost:${port}`)
 })
