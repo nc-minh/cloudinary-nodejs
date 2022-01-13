@@ -23,7 +23,8 @@
                     <input type="file" accept="image/*" name="file" id="file-upload">
                 </div>
                 <button class="item__btn" onclick="upload()">Upload</button>
-                <p class="item__notify"></p>
+                <p class="item__notify" id="notify-upload"></p>
+                <a class="item__link" id="link-upload" target="_blank">LINK</a>
             </div>
             <div class="item">
                 <h3 class="item__name">Upload video</h3>
@@ -31,7 +32,8 @@
                     <input type="file" accept="video/mp4,video/x-m4v,video/*" name="file" id="file-upload-video">
                 </div>
                 <button class="item__btn" onclick="uploadVideo()">Upload</button>
-                <p class="item__notify"></p>
+                <p class="item__notify" id="notify-upload-video"></p>
+                <a class="item__link" id="link-upload-video" target="_blank">LINK</a>
             </div>
             <div class="item">
                 <h3 class="item__name">Delete image</h3>
@@ -39,7 +41,7 @@
                     <input type="text" name="text" id="text-delete" placeholder="Public ID - image">
                 </div>
                 <button class="item__btn" onclick="deleteImage()">Delete</button>
-                <p class="item__notify"></p>
+                <p class="item__notify" id="notify-delete"></p>
             </div>
             <div class="item">
                 <h3 class="item__name">Delete video</h3>
@@ -47,7 +49,7 @@
                     <input type="text" name="text" id="text-delete-video" placeholder="Public ID - video">
                 </div>
                 <button class="item__btn" onclick="deleteVideo()">Delete</button>
-                <p class="item__notify"></p>
+                <p class="item__notify" id="notify-delete-video"></p>
             </div>
         </div>
 

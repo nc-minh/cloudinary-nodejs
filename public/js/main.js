@@ -8,22 +8,38 @@ function getBase64(file) {
 }
 
 function upload() {
+
     var file = document.getElementById('file-upload')
+    const notifyUpload = document.getElementById('notify-upload')
+    const linkUpload = document.getElementById('link-upload')
     var _file = file.files[0]
+
+    notifyUpload.innerText = ''
+    linkUpload.style.display = 'none'
 
     getBase64(_file).then(data => {
 
         fetch('/api/upload', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                data
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data
+                })
             })
-        })
             .then(response => response.json())
-            .then(result => console.log(result))
+            .then(result => {
+                console.log(result)
+                if (result.message === 'succes') {
+                    notifyUpload.innerText = result.public_id
+                    linkUpload.setAttribute('href', result.url)
+                    linkUpload.style.display = 'block'
+                } else {
+                    notifyUpload.innerText = result.message
+                    linkUpload.style.display = 'none'
+                }
+            })
             .catch(error => console.log('error', error))
     })
 
@@ -31,29 +47,46 @@ function upload() {
 
 function uploadVideo() {
     var file = document.getElementById('file-upload-video')
+    const notifyUploadVideo = document.getElementById('notify-upload-video')
+    const linkUploadVideo = document.getElementById('link-upload-video')
     var _file = file.files[0]
+
+    notifyUploadVideo.innerText = ''
+                    linkUploadVideo.style.display = 'none'
 
     getBase64(_file).then(data => {
 
         fetch('/api/upload-video', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                data
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data
+                })
             })
-        })
             .then(response => response.json())
-            .then(result => console.log(result))
+            .then(result => {
+                console.log(result)
+                if (result.message === 'succes') {
+                    notifyUploadVideo.innerText = result.public_id
+                    linkUploadVideo.setAttribute('href', result.url)
+                    linkUploadVideo.style.display = 'block'
+                } else {
+                    notifyUploadVideo.innerText = result.message
+                    linkUploadVideo.style.display = 'none'
+                }
+            })
             .catch(error => console.log('error', error))
     })
 
 }
 
-function deleteImage(){
+function deleteImage() {
     var id = document.getElementById('text-delete').value
+    const notifyDelete = document.getElementById('notify-delete')
 
+    notifyDelete.innerText = ''
     fetch('/api/delete', {
             method: 'DELETE',
             headers: {
@@ -65,12 +98,24 @@ function deleteImage(){
             redirect: 'follow'
         })
         .then(response => response.json())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result)
+            if (result.message === 'succes') {
+                notifyDelete.innerText = result.data.result
+            } else if (result.status === 'failure') {
+                notifyDelete.innerText = result.message
+            } else {
+                notifyDelete.innerText = result.error.message
+            }
+        })
         .catch(error => console.log('error', error))
 }
 
-function deleteVideo(){
+function deleteVideo() {
     var id = document.getElementById('text-delete-video').value
+    const notifyDeleteVideo = document.getElementById('notify-delete-video')
+
+    notifyDeleteVideo.innerText = ''
 
     fetch('/api/delete-video', {
             method: 'DELETE',
@@ -83,6 +128,15 @@ function deleteVideo(){
             redirect: 'follow'
         })
         .then(response => response.json())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result)
+            if (result.message === 'succes') {
+                notifyDeleteVideo.innerText = result.data.result
+            } else if (result.status === 'failure') {
+                notifyDeleteVideo.innerText = result.message
+            } else {
+                notifyDeleteVideo.innerText = result.error.message
+            }
+        })
         .catch(error => console.log('error', error))
 }
