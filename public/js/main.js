@@ -77,7 +77,11 @@ function uploadVideo() {
                     linkUploadVideo.style.display = 'none'
                 }
             })
-            .catch(error => console.log('error', error))
+            .catch(error => {
+                console.log('error', error)
+                notifyUploadVideo.innerText = error
+                linkUploadVideo.style.display = 'none'
+            })
     })
 
 }

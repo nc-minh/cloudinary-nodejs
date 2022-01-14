@@ -6,9 +6,11 @@ const fileUpload = require('express-fileupload')
 const port = 3000
 require('dotenv').config()
 var bodyParser = require('body-parser')
+app.use(express.json({limit: '200mb'}))
+app.use(express.urlencoded({limit: '200mb'}))
 // parse application/json
-app.use(bodyParser.json({limit: '100mb'}))
-app.use(bodyParser.urlencoded({limit: '100mb', extended: true}))
+app.use(bodyParser.json({limit: '200mb', type:'application/json'}))
+app.use(bodyParser.urlencoded({limit: '200mb', extended: true, parameterLimit:1000000, type:'application/x-www-form-urlencoded'}))
 
 app.use(fileUpload({ useTempFiles: true }))
 
