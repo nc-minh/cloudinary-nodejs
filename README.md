@@ -7,7 +7,7 @@
 **Đây là hệ thống dựa trên API của cloudinary để tạo ra một số API nhằm để triển khai lưu trữ file(img, video, ...)**
 
 <div align="center" >
-    <a href="https://cloudinary-nodejs.vercel.app/"><b>Website Demo</b></a>
+    <a href="https://cloudinary-nodejs-production.up.railway.app/"><b>Website Demo</b></a>
 </div>
 
 ## Giới thiệu API
