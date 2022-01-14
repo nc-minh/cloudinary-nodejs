@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const fileUpload = require('express-fileupload')
-const port = 3000
+const port = process.env.PORT || 3000
 require('dotenv').config()
 var bodyParser = require('body-parser')
 app.use(express.json({limit: '200mb'}))
