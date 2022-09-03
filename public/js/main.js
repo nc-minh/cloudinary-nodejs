@@ -30,7 +30,6 @@ function upload() {
             })
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 if (result.message === 'succes') {
                     notifyUpload.innerText = result.public_id
                     linkUpload.setAttribute('href', result.url)
@@ -67,7 +66,6 @@ function uploadVideo() {
             })
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 if (result.message === 'succes') {
                     notifyUploadVideo.innerText = result.public_id
                     linkUploadVideo.setAttribute('href', result.url)
@@ -103,7 +101,6 @@ function deleteImage() {
         })
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             if (result.message === 'succes') {
                 notifyDelete.innerText = result.data.result
             } else if (result.status === 'failure') {
@@ -133,7 +130,6 @@ function deleteVideo() {
         })
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             if (result.message === 'succes') {
                 notifyDeleteVideo.innerText = result.data.result
             } else if (result.status === 'failure') {
